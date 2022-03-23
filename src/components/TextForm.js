@@ -65,23 +65,23 @@ export default function TextForm(props) {
             <div className="container">
                 <h1 style={{ color: props.mode === 'light' ? 'black' : 'white' }}>{props.heading}</h1>
                 <div className="mb-3">
-                    <textarea className="form-control" value={text} onChange={UponChange} id="mybox" rows="8" style={{color: props.mode === 'light' ? '#0c0c60' : 'white'  ,backgroundColor: props.mode === 'light' ? 'white' : 'grey'}}></textarea>
+                    <textarea className="form-control" value={text} onChange={UponChange} id="mybox" rows="8" style={{ color: props.mode === 'light' ? '#0c0c60' : 'white', backgroundColor: props.mode === 'light' ? 'white' : 'grey', cursor:'default' }}></textarea>
                 </div>
-                <button className="btn btn-primary mx-1" onClick={UpClick}>Convert to Uppercase</button>
-                <button className="btn btn-primary mx-1" onClick={LpClick}>Convert to Lowercase</button>
-                <button className="btn btn-primary mx-1" onClick={SenClick}>Convert to Sentencecase</button>
-                <button className="btn btn-primary mx-1" onClick={CapClick}>Convert to Capitalisedcase</button>
-                <button className="btn btn-primary mx-1" onClick={CopyClick}>Copy Text</button>
-                <button className="btn btn-primary mx-1" onClick={CleartClick}>Clear</button>
+                <button className="btn btn-primary mx-1 my-1" disabled={text.length === 0} onClick={UpClick}>Convert to Uppercase</button>
+                <button className="btn btn-primary mx-1 my-1" disabled={text.length === 0} onClick={LpClick}>Convert to Lowercase</button>
+                <button className="btn btn-primary mx-1 my-1" disabled={text.length === 0} onClick={SenClick}>Convert to Sentencecase</button>
+                <button className="btn btn-primary mx-1 my-1" disabled={text.length === 0} onClick={CapClick}>Convert to Capitalisedcase</button>
+                <button className="btn btn-primary mx-1 my-1" disabled={text.length === 0} onClick={CopyClick}>Copy Text</button>
+                <button className="btn btn-primary mx-1 my-1" disabled={text.length === 0} onClick={CleartClick}>Clear</button>
             </div>
 
             {/* <div className="container" style={{ color: props.mode === 'light' ? 'green' : 'white' }}> */}
             <div className="container" style={{ color: props.mode === 'light' ? '#0c0c60' : 'white' }}>
                 <h2>Text Summary</h2>
-                <p>No. of words {text.split(" ").length > 1 ? text.split(" ").length:"0"} and characters {text.length}</p>
-                <p>Time required to read {0.008 * text.split(" ").length} minutes</p>
+                <p>No. of words {text.split(" ").filter((element) => { return element.length !== 0 }).length} and characters {text.length}</p>
+                <p>Time required to read {0.008 * text.split(" ").filter((element) => { return element.length !== 0 }).length} minutes</p>
                 <h2>Preview</h2>
-                <p>{text.length>0?text:"Enter something to get the preview"}</p>
+                <p>{text.length > 0 ? text : "Nothing to Preview"}</p>
             </div>
         </>
     )
