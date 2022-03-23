@@ -1,6 +1,5 @@
 // import logo from './logo.svg';
 import './App.css';
-import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import Alert from './components/Alert';
@@ -9,8 +8,6 @@ import React, { useState } from 'react';
 // import React from "react";
 import {
   BrowserRouter,
-  Routes,
-  Route
 } from "react-router-dom";
 
 
@@ -53,18 +50,10 @@ function App() {
         <Navbar title='Text Utility' mode={mode} togglemode={togglemode} />
         <Alert alert={alert} />
         <div className="container">
-          <Routes>
-            <Route exact path="/About" element={<About mode={mode}/>} />
-              {/* <About /> */}
-            {/* </Route>  */}
-
-            <Route exact path="/" element={<TextForm showAlert={showAlert} heading='Enter the text' mode={mode} />}/> 
-             {/* <TextForm showAlert={showAlert} heading='Enter the text' mode={mode} /> */}
+            {/* <Route exact path="/" element={<TextForm showAlert={showAlert} heading='Enter the text' mode={mode} />}/>  */}
+             <TextForm showAlert={showAlert} heading='Enter the text' mode={mode} />
              {/* </Route> */}
-          </Routes>
-
-          {/* <TextForm showAlert={showAlert} heading='Enter the text' mode={mode}/> */}
-          {/* <About /> */}
+          
         </div>
       </BrowserRouter>
     </>
